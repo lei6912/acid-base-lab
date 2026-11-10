@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>酸鹼實驗室｜電解質及酸鹼反應</title>
+<meta name="description" content="國中自然第 4 冊「電解質及酸鹼反應」互動學習網站：導電實驗、解離、pH 值、指示劑、酸鹼中和與鹽類，一站一站動手學。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="spectrum" aria-hidden="true"></div>
+
+<header class="hero">
+  <p class="eyebrow">國中自然・第 4 冊・電解質及酸鹼反應</p>
+  <h1>酸鹼<span class="hl">實驗室</span></h1>
+  <p class="lead">不用背，先動手玩。七個實驗站，每一站都有可以拉、可以點的小實驗——<br class="wide">把「電解質、pH、指示劑、中和、鹽類」一次弄懂。</p>
+  <div class="hero-meta">
+    <div class="progress-card">
+      <div class="progress-top"><span>學習進度</span><b id="progText">0 / 7 站</b></div>
+      <div class="progress-bar"><i id="progBar"></i></div>
+      <div class="progress-sub" id="bestScore">總測驗尚未作答</div>
+    </div>
+    <a class="btn primary" href="#s1">從第 1 站開始 →</a>
+  </div>
+  <ol class="map" id="map"></ol>
+</header>
+
+<nav class="rail" id="rail" aria-label="實驗站導覽"></nav>
+
+<main>
+
+<!-- ============ 1 ============ -->
+<section class="station" id="s1" data-n="1" data-title="電解質">
+  <div class="st-head"><span class="num">01</span><div><h2>誰能讓燈泡亮？——電解質</h2><p class="st-sub">認識電解質與非電解質</p></div></div>
+  <div class="sticky-note"><b>一句話重點</b>電解質＝<u>溶於水</u>後能導電的<u>化合物</u>。兩個條件都要成立。</div>
+  <div class="lab">
+    <div class="lab-stage">
+      <svg id="condSvg" viewBox="0 0 320 300" role="img" aria-label="導電實驗裝置">
+        <path d="M110 150 V60 H160" class="wire"/><path d="M210 150 V60 H190" class="wire"/>
+        <circle id="glow" cx="175" cy="52" r="46" fill="#ffd23f" opacity="0"/>
+        <circle cx="175" cy="52" r="20" class="bulb" id="bulb"/>
+        <path d="M167 58 l4 -10 l4 10 l4 -10" class="filament"/>
+        <rect x="163" y="70" width="24" height="12" rx="2" class="socket"/>
+        <path d="M70 130 V262 a14 14 0 0 0 14 14 H236 a14 14 0 0 0 14 -14 V130" class="beaker"/>
+        <rect id="condLiquid" x="72" y="170" width="176" height="104" rx="12" fill="#cfe8f5" opacity=".9"/>
+        <rect x="104" y="140" width="12" height="110" class="electrode"/><rect x="204" y="140" width="12" height="110" class="electrode"/>
+        <text x="110" y="134" class="svg-t">＋</text><text x="210" y="134" class="svg-t">－</text>
+        <g id="condIons"></g>
+        <g id="condSolid" opacity="0"><rect x="130" y="238" width="60" height="30" rx="4" fill="#fff" stroke="#1d1c1a" stroke-width="2"/><text x="160" y="258" class="svg-t sm">固體</text></g>
+      </svg>
+    </div>
+    <div class="lab-ctrl">
+      <p class="hint">點一種物質，放進燒杯測試：</p>
+      <div class="chips" id="condChips"></div>
+      <div class="result" id="condResult" aria-live="polite"><b>請先選一種物質</b><p>觀察燈泡亮不亮，再想想為什麼。</p></div>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="card"><h3>為什麼會導電？</h3><p>電解質溶於水時會<b>解離</b>成帶正電和帶負電的<b>離子</b>。通電後，正離子游向負極、負離子游向正極，電流就通了。</p><p>糖和酒精溶於水後仍是<b>分子</b>，不帶電，所以不導電，稱為<b>非電解質</b>。</p></div>
+    <div class="card warn"><h3>最常錯的兩個陷阱</h3><p><b>① 食鹽固體不導電，但食鹽是電解質。</b>判斷標準是「溶於水後」能不能導電，不是固體狀態。</p><p><b>② 銅線會導電，但銅不是電解質。</b>銅是金屬元素，靠自由電子導電；電解質必須是化合物。</p></div>
+  </div>
+  <div class="myths" data-myths="1"></div>
+  <button class="btn done" data-done="1">這一站我學會了</button>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="station" id="s2" data-n="2" data-title="解離與離子">
+  <div class="st-head"><span class="num">02</span><div><h2>拆開來看看——解離與離子</h2><p class="st-sub">阿瑞尼斯的電離說</p></div></div>
+  <div class="sticky-note"><b>一句話重點</b>溶液電中性，是正負<u>總電量</u>相等，<u>不是</u>正負離子的個數相等。</div>
+  <div class="lab">
+    <div class="lab-stage tall">
+      <div class="eq" id="disEq"></div>
+      <div class="ionbox" id="disIons" aria-live="polite"></div>
+    </div>
+    <div class="lab-ctrl">
+      <p class="hint">選一種電解質，丟進水裡：</p>
+      <div class="chips" id="disChips"></div>
+      <div class="stepper"><span>放入幾個單位？</span><button type="button" id="disMinus" aria-label="減少">−</button><b id="disN">1</b><button type="button" id="disPlus" aria-label="增加">＋</button></div>
+      <div class="balance" id="disBalance"></div>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="card"><h3>電離說三句話</h3><ol class="tight"><li>電解質溶於水，會解離成帶電的<b>離子</b>。</li><li>正離子的總電量＝負離子的總電量，所以溶液<b>不帶電</b>（電中性）。</li><li>通電時，<b>正離子往負極</b>、<b>負離子往正極</b>移動，形成電流。</li></ol></div>
+    <div class="card"><h3>酸和鹼，就是看解離出什麼</h3><p><span class="tag acid">酸</span> 解離出 <b class="mono">H<sup>+</sup></b>（氫離子），例如 <span class="mono">HCl → H<sup>+</sup> + Cl<sup>−</sup></span></p><p><span class="tag base">鹼</span> 解離出 <b class="mono">OH<sup>−</sup></b>（氫氧根離子），例如 <span class="mono">NaOH → Na<sup>+</sup> + OH<sup>−</sup></span></p><p class="small">注意：一個 H<sub>2</sub>SO<sub>4</sub> 會放出 <b>2 個</b> H<sup>+</sup>，一個 Ca(OH)<sub>2</sub> 會放出 <b>2 個</b> OH<sup>−</sup>——中和計算時要乘 2。</p></div>
+  </div>
+  <div class="myths" data-myths="2"></div>
+  <button class="btn done" data-done="2">這一站我學會了</button>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="station" id="s3" data-n="3" data-title="常見的酸與鹼">
+  <div class="st-head"><span class="num">03</span><div><h2>認識藥品櫃——常見的酸與鹼</h2><p class="st-sub">性質、俗名與用途</p></div></div>
+  <div class="sticky-note"><b>一句話重點</b>酸碰到<u>活性大的金屬</u>冒氫氣、碰到<u>碳酸鹽</u>冒二氧化碳；鹼摸起來滑滑的、會溶解油脂。</div>
+  <div class="tabs" role="tablist"><button class="tab on" data-tab="acid" role="tab">酸</button><button class="tab" data-tab="base" role="tab">鹼</button><button class="tab" data-tab="cmp" role="tab">酸鹼比一比</button></div>
+  <div class="shelf" id="shelf"></div>
+  <div class="card warn"><h3>實驗安全：稀釋濃硫酸</h3><p>濃硫酸遇水會放出大量的熱。正確做法是<b>「酸入水」</b>：把濃硫酸沿著玻棒<b>慢慢倒進水裡</b>，一邊攪拌。</p><p>如果反過來把水倒進濃硫酸，水會瞬間沸騰、帶著酸液噴濺出來，非常危險。</p></div>
+  <div class="myths" data-myths="3"></div>
+  <button class="btn done" data-done="3">這一站我學會了</button>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="station" id="s4" data-n="4" data-title="pH 與指示劑">
+  <div class="st-head"><span class="num">04</span><div><h2>酸鹼有多強？——pH 值與指示劑</h2><p class="st-sub">拉動滑桿，看顏色怎麼變</p></div></div>
+  <div class="sticky-note"><b>一句話重點</b>pH 越小越酸。pH 每差 1，<span class="mono">[H<sup>+</sup>]</span> 就差 <u>10 倍</u>。</div>
+  <div class="phlab card">
+    <div class="ph-read"><div class="ph-big"><small>pH</small><b id="phVal">7</b></div><div class="ph-state" id="phState">中性</div><div class="ph-ex" id="phEx">純水</div></div>
+    <input type="range" id="phRange" min="0" max="14" step="1" value="7" aria-label="pH 值">
+    <div class="ph-scale" aria-hidden="true"><span>0</span><span>酸性</span><span>7</span><span>鹼性</span><span>14</span></div>
+    <div class="ph-conc"><div><small>氫離子濃度</small><b class="mono" id="phH"></b></div><div class="cmp" id="phCmp">＝</div><div><small>氫氧根離子濃度</small><b class="mono" id="phOH"></b></div></div>
+    <div class="tubes">
+      <div class="tube"><div class="glass"><i id="tLitmus"></i></div><b>石蕊</b><span id="nLitmus"></span></div>
+      <div class="tube"><div class="glass"><i id="tPhth"></i></div><b>酚酞</b><span id="nPhth"></span></div>
+      <div class="tube"><div class="glass"><i id="tUni"></i></div><b>廣用指示劑</b><span id="nUni"></span></div>
+    </div>
+    <p class="small center">顏色為示意。酚酞實際約在 pH 8.2～10 之間由無色轉為紅色；課本的說法是「酸性、中性無色，鹼性紅色」。</p>
+  </div>
+  <div class="grid2">
+    <div class="card"><h3>指示劑口訣</h3><table class="mini"><tr><th>指示劑</th><th>酸性</th><th>中性</th><th>鹼性</th></tr><tr><td>石蕊</td><td><i class="dot" style="background:#e5484d"></i>紅</td><td><i class="dot" style="background:#8e4ec6"></i>紫</td><td><i class="dot" style="background:#3e63dd"></i>藍</td></tr><tr><td>酚酞</td><td><i class="dot hollow"></i>無色</td><td><i class="dot hollow"></i>無色</td><td><i class="dot" style="background:#e93d82"></i>紅</td></tr><tr><td>廣用</td><td><i class="dot" style="background:#f76b15"></i>紅橙黃</td><td><i class="dot" style="background:#30a46c"></i>綠</td><td><i class="dot" style="background:#6e56cf"></i>藍紫</td></tr></table><p class="small"><b>陷阱：</b>酚酞「無色」不代表中性——酸性也是無色，只能確定「不是鹼性」。</p></div>
+    <div class="card"><h3>加水稀釋，pH 會怎麼變？</h3><p class="small">起始為 pH＝<b id="dilStart">2</b> 的鹽酸。每按一次稀釋 10 倍。</p><div class="dil"><div class="dil-read"><small>目前 pH</small><b id="dilPH">2.00</b></div><div class="dil-btns"><button class="btn sm" id="dilBtn" type="button">加水稀釋 10 倍</button><button class="btn sm ghost" id="dilReset" type="button">重來</button></div></div><div class="dil-track"><i id="dilMark"></i><span class="seven">7</span></div><p class="small" id="dilMsg">稀釋 10 倍，[H<sup>+</sup>] 變成 1/10，pH 加 1。</p></div>
+  </div>
+  <div class="card"><h3>莫耳濃度小算盤</h3><p class="small">莫耳濃度（M）＝ 溶質莫耳數 ÷ 溶液體積（<b>公升</b>）。改改數字，看計算步驟。</p>
+    <div class="calc"><label>溶質<select id="mSolute"></select></label><label>質量（g）<input type="number" id="mMass" value="4" min="0" step="0.5"></label><label>配成溶液（mL）<input type="number" id="mVol" value="500" min="1" step="50"></label></div>
+    <ol class="steps" id="mSteps"></ol>
+  </div>
+  <div class="myths" data-myths="4"></div>
+  <button class="btn done" data-done="4">這一站我學會了</button>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="station" id="s5" data-n="5" data-title="酸鹼中和">
+  <div class="st-head"><span class="num">05</span><div><h2>酸遇上鹼——酸鹼中和</h2><p class="st-sub">自己動手滴定</p></div></div>
+  <div class="sticky-note"><b>一句話重點</b>中和的本質只有一行：<span class="mono">H<sup>+</sup> + OH<sup>−</sup> → H<sub>2</sub>O</span>，而且會<u>放熱</u>。</div>
+  <div class="lab">
+    <div class="lab-stage">
+      <svg id="titSvg" viewBox="0 0 320 300" role="img" aria-label="滴定燒杯">
+        <rect x="150" y="6" width="20" height="92" rx="3" class="burette"/><rect id="burFill" x="152" y="8" width="16" height="88" fill="#bcd4f6"/>
+        <path d="M156 98 h8 l-2 14 h-4 z" fill="#1d1c1a"/>
+        <circle id="drop" cx="160" cy="124" r="4" fill="#7aa7ec" opacity="0"/>
+        <path d="M70 140 V262 a14 14 0 0 0 14 14 H236 a14 14 0 0 0 14 -14 V140" class="beaker"/>
+        <rect id="titLiquid" x="72" y="230" width="176" height="44" rx="12" fill="#eaf4fa"/>
+        <text x="160" y="296" class="svg-t sm" id="titVolT">杯內 20 mL</text>
+      </svg>
+      <div class="thermo"><small>溫度</small><b id="titTemp">25.0</b><span>℃</span></div>
+    </div>
+    <div class="lab-ctrl">
+      <div class="seg" id="titAcid"><button type="button" class="on" data-a="HCl">鹽酸 HCl</button><button type="button" data-a="H2SO4">硫酸 H<sub>2</sub>SO<sub>4</sub></button></div>
+      <p class="hint" id="titSetup"></p>
+      <label class="slider-l">滴入 1.0 M 氫氧化鈉：<b id="titVb">0</b> mL<input type="range" id="titRange" min="0" max="60" step="1" value="0"></label>
+      <div class="result" id="titResult" aria-live="polite"></div>
+      <div class="bars" id="titBars"></div>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="card"><h3>溫度曲線</h3><svg id="titChart" viewBox="0 0 320 170" role="img" aria-label="溫度與加入氫氧化鈉體積的關係"></svg><p class="small">溫度<b>最高點</b>就是恰好完全中和的那一刻：之前越加越熱，之後再加的鹼沒有酸可以反應，只會把溶液沖涼。</p></div>
+    <div class="card"><h3>計算只要一個等式</h3><p class="formula">H<sup>+</sup> 莫耳數 ＝ OH<sup>−</sup> 莫耳數</p><p class="formula sm">M<sub>酸</sub> × V<sub>酸</sub> × <span class="pill">酸的 H 數</span> ＝ M<sub>鹼</sub> × V<sub>鹼</sub> × <span class="pill">鹼的 OH 數</span></p><p class="small">HCl、NaOH 的倍數都是 1；H<sub>2</sub>SO<sub>4</sub> 是 2，Ca(OH)<sub>2</sub> 是 2。<br>把上面的實驗切到硫酸試試——同樣 20 mL、同樣濃度，需要的氫氧化鈉會變成<b>兩倍</b>。</p></div>
+  </div>
+  <div class="card"><h3>杯子裡到底剩下什麼？</h3><div class="timeline"><div><b>還沒中和完</b><p>酸過量。溶液酸性，酚酞無色。<br>主要離子：<span class="mono">H<sup>+</sup>、Cl<sup>−</sup>、Na<sup>+</sup></span></p></div><div><b>恰好中和</b><p>H<sup>+</sup> 和 OH<sup>−</sup> 都用完。溶液中性。<br>主要離子：<span class="mono">Na<sup>+</sup>、Cl<sup>−</sup></span>（就是食鹽水）</p></div><div><b>鹼加過頭</b><p>鹼過量。溶液鹼性，酚酞變紅。<br>主要離子：<span class="mono">Na<sup>+</sup>、Cl<sup>−</sup>、OH<sup>−</sup></span></p></div></div><p class="small">Na<sup>+</sup> 和 Cl<sup>−</sup> 從頭到尾都沒有參與反應，只是在旁邊看——它們最後組成的就是「鹽」。</p></div>
+  <div class="myths" data-myths="5"></div>
+  <button class="btn done" data-done="5">這一站我學會了</button>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="station" id="s6" data-n="6" data-title="鹽類">
+  <div class="st-head"><span class="num">06</span><div><h2>中和留下的產物——鹽類</h2><p class="st-sub">五種一定要認得的鹽</p></div></div>
+  <div class="sticky-note"><b>一句話重點</b>酸 ＋ 鹼 → <u>鹽</u> ＋ 水。鹽不是只有食鹽，而且水溶液<u>不一定是中性</u>。</div>
+  <div class="salts" id="salts"></div>
+  <div class="card warn"><h3>蘇打、小蘇打別搞混</h3><table class="mini"><tr><th></th><th>蘇打（洗滌鹼）</th><th>小蘇打（焙用鹼）</th></tr><tr><td>學名</td><td>碳酸鈉 Na<sub>2</sub>CO<sub>3</sub></td><td>碳酸氫鈉 NaHCO<sub>3</sub></td></tr><tr><td>水溶液</td><td>鹼性（較強）</td><td>弱鹼性</td></tr><tr><td>用途</td><td>清潔、製玻璃</td><td>發粉、胃藥、乾粉滅火器</td></tr><tr><td>記法</td><td colspan="2">名字多一個「氫」的，是比較溫和的<b>小</b>蘇打。</td></tr></table></div>
+  <div class="myths" data-myths="6"></div>
+  <button class="btn done" data-done="6">這一站我學會了</button>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="station" id="s7" data-n="7" data-title="總測驗">
+  <div class="st-head"><span class="num">07</span><div><h2>驗收時間——總測驗</h2><p class="st-sub">12 題，答完立刻看解析</p></div></div>
+  <div class="sticky-note"><b>作答方式</b>點選項就會馬上判定並顯示解析。計算題可以拿紙筆算。答錯的主題，最後會告訴你該回哪一站。</div>
+  <div id="quiz"></div>
+  <div class="card score" id="quizScore" hidden></div>
+</section>
+
+</main>
+
+<footer>
+  <p><b>酸鹼實驗室</b>　依國中自然科（108 課綱）第 4 冊「電解質及酸鹼反應」單元內容編寫，題目與說明皆為原創。</p>
+  <p class="small">學習進度只存在這台裝置的瀏覽器裡。<button class="linklike" id="resetAll" type="button">清除進度</button></p>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
